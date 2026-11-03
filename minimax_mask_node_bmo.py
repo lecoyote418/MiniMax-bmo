@@ -130,7 +130,7 @@ class MinimaxRemoverBMONode:
         # Standard model locations to try
         possible_locations = [
             # Project directory
-            Path("models"),
+            Path(__file__).parent / "models"
             # ComfyUI models directory  
             self.comfyui_models_path,
             # User's cache directory
@@ -175,7 +175,7 @@ class MinimaxRemoverBMONode:
             print("📥 Models not found locally. Starting automatic download...")
         
         # Choose download location (prefer project directory, fallback to cache)
-        download_base = Path("models")
+        download_base = Path(__file__).parent / "models"
         if not download_base.parent.exists() or not os.access(download_base.parent, os.W_OK):
             download_base = Path.home() / ".cache" / "minimax-remover" / "models"
             print(f"📁 Using cache directory for models: {download_base}")
