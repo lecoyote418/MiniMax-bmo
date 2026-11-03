@@ -45,7 +45,7 @@ class AttnProcessor2_0:
         if rotary_emb is not None:
 
             def apply_rotary_emb(hidden_states: torch.Tensor, freqs: torch.Tensor):
-                x_rotated = torch.view_as_complex(hidden_states.to(torch.float64).unflatten(3, (-1, 2)))
+                x_rotated = torch.view_as_complex(hidden_states.to(torch.float32).unflatten(3, (-1, 2)))
                 x_out = torch.view_as_real(x_rotated * freqs).flatten(3, 4)
                 return x_out.type_as(hidden_states)
 
@@ -108,7 +108,7 @@ class RotaryPosEmbed(nn.Module):
         freqs = []
         for dim in [t_dim, h_dim, w_dim]:
             freq = get_1d_rotary_pos_embed(
-                dim, max_seq_len, theta, use_real=False, repeat_interleave_real=False, freqs_dtype=torch.float64
+                dim, max_seq_len, theta, use_real=False, repeat_interleave_real=False, freqs_dtype=torch.float32
             )
             freqs.append(freq)
         self.freqs = torch.cat(freqs, dim=1)
