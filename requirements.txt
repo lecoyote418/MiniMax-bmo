@@ -1,23 +1,5 @@
-# BMO MiniMax-Remover Requirements
-# For detailed installation instructions, please see the README.md
-
-# Core ML/AI Libraries
-# Pinned versions for stability.
-diffusers==0.33.1
-transformers==4.41.2
-accelerate==0.30.1
-
-# Tensor Operations
-einops==0.7.0
-scipy==1.11.4
-
-# Image/Video Processing
-# Note: These are common but pinning them ensures compatibility.
-opencv-python==4.9.0.80
-Pillow==10.3.0
-
-# Optional dependencies that often require manual installation.
-# Uncomment the lines below if you wish to try installing them via pip,
-# but refer to their official projects for platform-specific instructions.
-# xformers
-# bitsandbytes
+diffusers>=0.33.1
+einops
+scipy
+huggingface_hub
+opencv-python-headless
